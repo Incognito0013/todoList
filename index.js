@@ -10,10 +10,12 @@ dotenv.config();
 const app = express();
 
 //connnecting to db
-mongoose.set("useFindAndModify", false);
+
 
 mongoose.connect(process.env.DB_CONNECT, {
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useFindAndModify: true,
+    useUnifiedTopology: true
 })
     .then(() => {
         console.log("Connected to DB!")
