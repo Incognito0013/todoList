@@ -8,6 +8,7 @@ const TodoTask = require("./models/TodoTask");
 
 dotenv.config();
 const app = express();
+const port = process.env.PORT || 3000;
 
 //connnecting to db
 
@@ -24,7 +25,9 @@ mongoose.connect(process.env.DB_CONNECT, {
         console.log("err");
     });
 
-app.listen(3000, () => console.log("Server Up and running"));
+    app.listen(port, () => {
+        console.log(`listening on port http://localhost:${port}`);
+    });
 
 app.use("/static", express.static("public"));
 
